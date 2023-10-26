@@ -1,7 +1,6 @@
 package ru.ufanet.coffeeshop.models;
 
 import lombok.Data;
-import ru.ufanet.coffeeshop.models.Item;
 
 import java.time.LocalDateTime;
 import java.util.List;

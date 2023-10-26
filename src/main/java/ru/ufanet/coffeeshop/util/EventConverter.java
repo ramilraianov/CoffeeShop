@@ -52,6 +52,12 @@ public class EventConverter {
             throw new IllegalArgumentException("Покупатель (customerId) является обязательным полем.");
         }
 
+        if (eventRequest.getExpectedTime() != null) {
+            event.getEventData().put("expectedTime", eventRequest.getExpectedTime().toString());
+        } else if (event.getEventType() == EventType.RESERVED) {
+            throw new IllegalArgumentException("Ожидаемое время выдачи (expectedTime) является обязательным полем.");
+        }
+
         if (eventRequest.getReason() != null) {
             event.getEventData().put("reason", eventRequest.getReason());
         } else if (event.getEventType() == EventType.CANCELED) {
