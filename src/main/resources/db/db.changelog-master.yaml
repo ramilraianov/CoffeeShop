@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: raianov
+      changes:
+        - sqlFile:
+            encoding: utf8
+            stripComments: true
+            path: /db/ddl/001_create_table_order_events.sql
+        - sqlFile:
+            encoding: utf8
+            stripComments: true
+            path: /db/ddl/002_create_table_orders.sql

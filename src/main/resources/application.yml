@@ -1,0 +1,42 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, prometheus
+      base-path: /
+  server:
+    port: 8081
+server:
+  port: 8080
+spring:
+  liquibase:
+    change-log: classpath:db/db.changelog-master.yaml
+    default-schema: &default-schema public
+    parameters:
+      schema: *default-schema
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ufanet
+    username: postgres
+    password: postgres
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+logging:
+  level:
+    root: INFO
+    org.tlsys: DEBUG
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
